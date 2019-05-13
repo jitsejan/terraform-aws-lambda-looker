@@ -5,7 +5,7 @@ Simple Terraform deployment of a Lambda function that exports a Looker view to S
 ## Terraform initialization
 
 ```bash
-╭─    ~/code/terraform-aws-lambda-looker     master                                 1 ↵  22:09    90%   3.11G 
+╭─ ~/code/terraform-aws-lambda-looker $
 ╰─ terraform init
 
 Initializing provider plugins...
@@ -36,7 +36,7 @@ commands will detect it and remind you to do so if necessary.
 ## Terraform plan
 
 ```bash
-╭─    ~/code/terraform-aws-lambda-looker     master                            3.75   22:09    90%   3.09G 
+╭─ ~/code/terraform-aws-lambda-looker $
 ╰─ terraform plan
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
@@ -149,7 +149,7 @@ can't guarantee that exactly these actions will be performed if
 ## Terraform deploy
 
 ```bash
-╭─    ~/code/terraform-aws-lambda-looker     master                                                                                                                                                                    127 ↵  15.57   09:40    67%   5.50G 
+╭─ ~/code/terraform-aws-lambda-looker $ 
 ╰─ ./deploy.sh
 [1/3] Creating packages for Lambda
 > Checking for Lambda functions in /Users/j.waterschoot/code/terraform-aws-lambda-looker/sources/lambda-functions
@@ -186,14 +186,14 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 ## AWS overview
 
 ### Lambda functions
-![Lambda function overview]("images/lambda_overview.png")
+![Lambda function overview]("./images/lambda_overview.png")
 
 ### Lambda function detail
-![Lambda function]("images/lambda_function_overview.png")
+![Lambda function]("./images/lambda_function_overview.png")
 
 ### Cloudwatch event
-![Cloudwatch event]("images/cloudwatch_event.png")
+![Cloudwatch event]("./images/cloudwatch_event.png")
 
 ### Cloudwatch rule
 
-![Cloudwatch rule]("images/cloudwatch_rule.png")
+![Cloudwatch rule]("./images/cloudwatch_rule.png")
