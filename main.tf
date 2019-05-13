@@ -96,8 +96,8 @@ resource "aws_cloudwatch_event_rule" "cloudwatch-event-rule-midnight-run" {
 
 # Define the CloudWatch target
 resource "aws_cloudwatch_event_target" "cloudwatch-event-target" {
-  rule = "dev-cloudwatch-event-rule-midnight-run"
-  arn  = "arn:aws:lambda:eu-west-1:848373817713:function:dev-lambda-looker-upload"
+  rule = "dev-cloudwatch-event-rule-midnight-run-looker-upload"
+  arn  = "arn:aws:lambda:${var.region}:848373817713:function:dev-lambda-looker-upload"
 }
 
 # Define the Lambda permission to run Lambda from CloudWatch
@@ -106,5 +106,5 @@ resource "aws_lambda_permission" "lambda-permission-cloudwatch" {
   action        = "lambda:InvokeFunction"
   function_name = "dev-lambda-looker-upload"
   principal     = "events.amazonaws.com"
-  source_arn    = "arn:aws:events:eu-west-1:848373817713:rule/dev-cloudwatch-event-rule-midnight-run-looker-upload"
+  source_arn    = "arn:aws:events:${var.region}:848373817713:rule/dev-cloudwatch-event-rule-midnight-run-looker-upload"
 }

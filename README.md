@@ -145,3 +145,55 @@ Note: You didn't specify an "-out" parameter to save this plan, so Terraform
 can't guarantee that exactly these actions will be performed if
 "terraform apply" is subsequently run.
 ```
+
+## Terraform deploy
+
+```bash
+╭─    ~/code/terraform-aws-lambda-looker     master                                                                                                                                                                    127 ↵  15.57   09:40    67%   5.50G 
+╰─ ./deploy.sh
+[1/3] Creating packages for Lambda
+> Checking for Lambda functions in /Users/j.waterschoot/code/terraform-aws-lambda-looker/sources/lambda-functions
+>> Zipping /Users/j.waterschoot/code/terraform-aws-lambda-looker/sources/lambda-functions/looker-upload
+Collecting certifi==2019.3.9 (from -r requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/60/75/f692a584e85b7eaba0e03827b3d51f45f571c2e793dd731e598828d380aa/certifi-2019.3.9-py2.py3-none-any.whl (158kB)
+Collecting lookerapi==3.0.0 (from -r requirements.txt (line 2))
+  Downloading https://files.pythonhosted.org/packages/5e/b5/49ecd3c4c86803e62e24ee206681e64820e24ab289b3d8496db98a073c60/lookerapi-3.0.0-py3-none-any.whl (687kB)
+Collecting python-dateutil==2.8.0 (from -r requirements.txt (line 3))
+  Downloading https://files.pythonhosted.org/packages/41/17/c62faccbfbd163c7f57f3844689e3a78bae1f403648a6afb1d0866d87fbb/python_dateutil-2.8.0-py2.py3-none-any.whl (226kB)
+Collecting six==1.12.0 (from -r requirements.txt (line 4))
+  Downloading https://files.pythonhosted.org/packages/73/fb/00a976f728d0d1fecfe898238ce23f502a721c0ac0ecfedb80e0d88c64e9/six-1.12.0-py2.py3-none-any.whl
+Collecting urllib3==1.24.2 (from -r requirements.txt (line 5))
+  Downloading https://files.pythonhosted.org/packages/df/1c/59cca3abf96f991f2ec3131a4ffe72ae3d9ea1f5894abe8a9c5e3c77cfee/urllib3-1.24.2-py2.py3-none-any.whl (131kB)
+Installing collected packages: certifi, lookerapi, python-dateutil, six, urllib3
+Successfully installed certifi-2019.3.9 lookerapi-3.0.0 python-dateutil-2.8.0 six-1.12.0 urllib3-1.24.2
+You are using pip version 19.0.3, however version 19.1.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+[2/3] Deploying on AWS
+aws_s3_bucket.bucket-lambda-deployments: Refreshing state... (ID: dev-jwat)
+aws_cloudwatch_event_target.cloudwatch-event-target: Refreshing state... (ID: dev-cloudwatch-event-rule-midnight-run-...d-terraform-20190513083217509800000001)
+aws_iam_role.role-lambda: Refreshing state... (ID: dev-jwat-role-lambda)
+aws_lambda_permission.lambda-permission-cloudwatch: Refreshing state... (ID: AllowExecutionFromCloudWatch)
+aws_cloudwatch_event_rule.cloudwatch-event-rule-midnight-run: Refreshing state... (ID: dev-cloudwatch-event-rule-midnight-run-looker-upload)
+aws_lambda_function.lambda-function: Refreshing state... (ID: dev-lambda-looker-upload)
+aws_iam_role_policy.policy-lambda: Refreshing state... (ID: dev-jwat-role-lambda:dev-jwat-policy-lambda)
+
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+[3/3] Executing the initial run script
+> Running function `dev-lambda-looker-upload`.
+< Response: {'ResponseMetadata': {'RequestId': '1d492f55-78c4-47c2-921a-a27cf784d4b0', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Mon, 13 May 2019 08:40:36 GMT', 'content-type': 'application/json', 'content-length': '123', 'connection': 'keep-alive', 'x-amzn-requestid': '1d492f55-78c4-47c2-921a-a27cf784d4b0', 'x-amz-function-error': 'Unhandled', 'x-amzn-remapped-content-length': '0', 'x-amz-executed-version': '$LATEST', 'x-amzn-trace-id': 'root=1-5cd92d84-d306a2215d6228179c96cb04;sampled=0'}, 'RetryAttempts': 0}, 'StatusCode': 200, 'FunctionError': 'Unhandled', 'ExecutedVersion': '$LATEST', 'Payload': <botocore.response.StreamingBody object at 0x10ea5ceb8>}
+```
+
+## AWS overview
+
+### Lambda functions
+![Lambda function overview]("images/lambda_overview.png")
+
+### Lambda function detail
+![Lambda function]("images/lambda_function_overview.png")
+
+### Cloudwatch event
+![Cloudwatch event]("images/cloudwatch_event.png")
+
+### Cloudwatch rule
+
+![Cloudwatch rule]("images/cloudwatch_rule.png")

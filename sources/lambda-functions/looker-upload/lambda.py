@@ -29,7 +29,7 @@ def _get_look_from_looker(look_number):
     return lookApi.run_look(look_number, "csv")
 
 
-def upload_loanbook(look_number):
+def upload_look(look_number):
     """ Upload the look to the public S3 bucket """
     result = _get_look_from_looker(look_number)
     client.put_object(
@@ -42,4 +42,4 @@ def upload_loanbook(look_number):
 
 def handler(event, context):
     """ Main function """
-    return upload_loanbook(1234)
+    return upload_look(1234)
