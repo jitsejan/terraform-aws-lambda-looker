@@ -189,11 +189,11 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 ![Lambda function overview](./images/lambda_overview.png)
 
 ### Lambda function detail
-![Lambda function]("./images/lambda_function_overview.png")
+![Lambda function](./images/lambda_function_overview.png)
 
 ### Cloudwatch event
-![Cloudwatch event]("./images/cloudwatch_event.png")
+![Cloudwatch event](./images/cloudwatch_event.png)
 
 ### Cloudwatch rule
 
-![Cloudwatch rule]("./images/cloudwatch_rule.png")
+![Cloudwatch rule](./images/cloudwatch_rule.png)
