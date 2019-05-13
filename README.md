@@ -186,7 +186,7 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 ## AWS overview
 
 ### Lambda functions
-![Lambda function overview]("./images/lambda_overview.png")
+![Lambda function overview](./images/lambda_overview.png)
 
 ### Lambda function detail
 ![Lambda function]("./images/lambda_function_overview.png")
